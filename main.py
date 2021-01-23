@@ -3,7 +3,6 @@ from time import sleep
 from encryption import encryptPDF
 import decryption
 from pdfmerger import PDFmerger
-from watermark import watermark
 import PDFfilepaths as pdf
 
 if __name__ == "__main__":
@@ -15,15 +14,15 @@ if __name__ == "__main__":
     sleep(0.75)
     print("\t \t \t \t\t\tPDF EDITING SOFTWARE \n \n \n\n\n\n")
     sleep(0.5)
-    print("\tWelcome to the PDF editing software. falana dhamkana. \n \n\n")
+    print("""\tWelcome to the PDF editing software. It allows you to encrypt, decryt and even merge of PDF files.
+    \t   \tMoreover, you can even the password of your already encrypted file \n \n\n""")
     print("Kindly choose one of the options below:\n\n")
     print("""1. View list of all PDFs present in your system.
 2. Encrypt your pdf.
 3. Decrypt your pdf.
 4. Merge your pdfs.
 5. Change the password of your pdf.
-6. Add watermark to your pdf.
-7. Exit\n \n""")
+6. Exit\n \n""")
 
 while True:
 
