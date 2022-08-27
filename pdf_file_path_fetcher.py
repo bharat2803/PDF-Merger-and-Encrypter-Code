@@ -1,6 +1,6 @@
 import sqlite3
-from PDFfilepathgenerator import generate
-def fetchpath(filename):
+from pdf_file_paths import generate
+def fetch_path(filename):
         try:
             dbconnect = sqlite3.connect("pdfdatabase.sqlite")
             dbcursor = dbconnect.cursor()
@@ -29,4 +29,4 @@ def fetchpath(filename):
 
 if __name__ =="__main__":
     generate()
-    print(fetchpath("Communication.pdf"))
+    print(fetch_path("Communication.pdf"))

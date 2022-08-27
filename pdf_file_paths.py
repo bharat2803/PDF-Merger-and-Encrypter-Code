@@ -14,14 +14,14 @@ def generate():
                     pdf_files VARCHAR);""")
 
     #This function is used for recursion to create the path of every PDF present in the system.
-    def creater(pathname):
+    def create_path(pathname):
         for x in os.scandir(pathname):
             if pathname == "C:\\Users\\":
                 try:
                     if x.name not in ['All Users','Default','Default User']: #Restricted folders
                         if os.path.isdir(x):
                             nextpath= os.path.join(pathname,x.name+'\\')
-                            creater(nextpath)
+                            create_path(nextpath)
 
                         if os.path.isfile(x):
                             if x.name.split('.')[-1] == "pdf":
@@ -33,7 +33,7 @@ def generate():
                 try:
                     if os.path.isdir(x):
                         nextpath= os.path.join(pathname,x.name+'\\')
-                        creater(nextpath)
+                        create_path(nextpath)
 
                     if os.path.isfile(x):
                         if x.name.split('.')[-1] == "pdf":
@@ -43,12 +43,12 @@ def generate():
                     pass
 
 
-    creater("C:\\Users\\")
+    create_path("C:\\Users\\")
     dbconnect.commit()
     dbconnect.close()
 
 #To get the filepath of the PDF given.
-def fetchpath(filename):
+def fetch_path(filename):
         try:
             dbconnect = sqlite3.connect("pdfdatabase.sqlite")
             dbcursor = dbconnect.cursor()
@@ -76,7 +76,7 @@ def fetchpath(filename):
             return None
 
 #To get list of all the PDF files present
-def getfileslist():
+def get_files_list():
     print("\n\n  These are all the PDF files present in your system: \n\n")
     dbconnect = sqlite3.connect("pdfdatabase.sqlite")
     dbcursor = dbconnect.cursor()
@@ -88,4 +88,4 @@ def getfileslist():
 if __name__ =="__main__":
     generate()
     print("Table created")
-    getfileslist()
+    get_files_list()

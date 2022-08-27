@@ -5,7 +5,7 @@ import os
 
 # This program merges 2 or more PDFs
 
-def PDFmerger(filepaths):
+def pdf_merger(filepaths):
 
     totalpdfs = len(filepaths)
     merger = PyPDF2.PdfFileMerger()
@@ -26,4 +26,4 @@ def PDFmerger(filepaths):
 
 
 if __name__ == "__main__":
-    PDFmerger(["Resume.pdf","cloned.pdf"])
+    pdf_merger(["Resume.pdf","cloned.pdf"])

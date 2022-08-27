@@ -1,15 +1,15 @@
 import PyPDF2
 import getpass
 import os
-import PDFfilepaths as pdf
+import pdf_file_paths as pdf
 
-def encryptPDF(filepath):
+def encrypt_pdf(filepath):   
     head,tail=os.path.split(filepath)
     with open(filepath, mode='rb') as file:
         file_to_encrypt=PyPDF2.PdfFileReader(file)
         if file_to_encrypt.isEncrypted:
             print("\n This file is already encrypted. If you want to decrypt the file or if you want to change the password of the file, choose the appropraite option from the menu.")
-            return 1
+            return 0
         else:
             while True:
                 password=getpass.getpass("Enter the new Password: ")
@@ -28,8 +28,7 @@ def encryptPDF(filepath):
     os.rename(filepath,head+"\\temp.pdf")
     os.rename(head+"\\clone.pdf",filepath)
     os.remove(head+"\\temp.pdf")
-    return 0
     os.startfile(filepath)
 
 if __name__ == "__main__":
-    encryptPDF(pdf.fetchpath("Resume.pdf"))
+    encrypt_pdf(pdf.fetch_path("Resume.pdf"))
